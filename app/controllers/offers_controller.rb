@@ -9,6 +9,6 @@ class OffersController < ApplicationController
   private
 
   def search_params
-    params
+    params.permit(:uid, :pub0, :page)
   end
 end
