@@ -1,22 +1,22 @@
 .panel.panel-default
   .panel-heading
-    Fyber Offers
+    = @message
   .panel-body
     = form_tag offers_path, method: :get, class: "form-inline" do
       .form-group
-        = text_field_tag :uid, '', class: 'form-control', placeholder: "uid"
+        = text_field_tag :uid, params[:uid], class: 'form-control', placeholder: "uid"
       .form-group
-        = text_field_tag :pub0, '', class: 'form-control', placeholder: "pub0"
+        = text_field_tag :pub0, params[:pub0], class: 'form-control', placeholder: "pub0"
       .form-group
-        = text_field_tag :page, '', class: 'form-control', type: :number, placeholder: "page"
+        = text_field_tag :page, params[:page], class: 'form-control', type: :number, placeholder: "page"
       = submit_tag 'Show offers', class: 'btn btn-primary'
   %ul.list-group
     - @offers.each do |offer|
       %li.list-group-item
         .offer
-          .title= offer['title']
-          .payout= offer['payout']
-          .thumbnail= image_tag offer['thumbnail']['lowres']
+          .title= offer[:title]
+          .payout= offer[:payout]
+          .thumbnail= image_tag offer[:thumbnail][:lowres]
 
     - if @offers.empty?
       %li.list-group-item
